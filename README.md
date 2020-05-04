@@ -1,0 +1,1 @@
+# Verify_Noise_Transparentization_Formula
