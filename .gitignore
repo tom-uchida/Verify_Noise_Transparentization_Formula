@@ -1,4 +1,7 @@
+Plane/.vscode
 Plane/Generate_Point_Cloud/SPBR_DATA/
 Plane/Generate_Point_Cloud/*.o
 Plane/Generate_Point_Cloud/*.kvs
 Plane/Generate_Point_Cloud/*.csv
+
+Plane/GRAY/IMAGE_DATA/

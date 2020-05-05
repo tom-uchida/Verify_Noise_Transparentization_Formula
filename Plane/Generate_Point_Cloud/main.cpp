@@ -13,7 +13,7 @@
 #include <vector>
 #include <math.h>
 
-#define  N_TOTAL      1000000
+#define  N_TOTAL      10000000
 #define  TRUTH_MAX    0.99
 #define  TRUTH_MIN    0.01
 
