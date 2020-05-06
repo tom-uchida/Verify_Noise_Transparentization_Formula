@@ -20,8 +20,8 @@
 const char OUTPUT_FILE_NAME[] = "SPBR_DATA/plane_color_noise.spbr";
 
 int main(int argc, char **argv) {
-    if ( argc != 3 ) {
-        std::cout << "USAGE: " << argv[0] << " [C_pt] [sigma2(variance)]" << std::endl;
+    if ( argc != 4 ) {
+        std::cout << "USAGE: " << argv[0] << " [Num. of points] [C_pt] [sigma2(variance)]" << std::endl;
         exit(1);
     }
 
@@ -30,12 +30,13 @@ int main(int argc, char **argv) {
     std::string     of_name( OUTPUT_FILE_NAME ); 
     fout.open( of_name );
 
-    int c_pt = atoi(argv[1]);
-    float sigma2 = atof(argv[2]);
+    int num_of_points = atoi(argv[1]);
+    int c_pt = atoi(argv[2]);
+    float sigma2 = atof(argv[3]);
+    std::cout << "Number of points: " << num_of_points << std::endl;
     std::cout << "C_pt: " << +c_pt << std::endl;
     std::cout << "sigma2(variance): " << sigma2 << std::endl;
-    std::cout << "sigma(standard deviation): " << sqrtf(sigma2) << std::endl;
-    std::cout << "Number of points: " << N_TOTAL << std::endl;
+    std::cout << "sigma(standard deviation): " << sqrtf(sigma2) << "\n" << std::endl;
 
     // Set SPBR header
     fout << "#/SPBR_ASCII_Data"      << std::endl;
@@ -57,7 +58,7 @@ int main(int argc, char **argv) {
     r_noised = g_noised = b_noised = c_pt;
 
     // Add Gaussian noise to "color" of all 3D points.
-    for ( int i = 0 ; i < N_TOTAL; i++ ) {
+    for ( int i = 0 ; i < num_of_points; i++ ) {
         x = uniRand(); // random number [0...1] for x
         y = uniRand(); // random number [0...1] for y
         z = 0.0;
@@ -79,7 +80,12 @@ int main(int argc, char **argv) {
         // Write to .spbr file 
         fout << x << " " << y << " " << z << " ";
         fout << 0 << " " << 0 << " " << 0 << " ";
-        fout << r_noised << " " << g_noised << " " << b_noised << std::endl;
+        fout << r_noised << " " << g_noised << " " << b_noised << "\n";
+
+        // Show progress
+        if ( (i+1) % int(num_of_points*0.1) == 0 ) {
+            std::cout << (i*100)/num_of_points+1 << "\% done." << std::endl;
+        }
     } // end for
 
     // FILE close
