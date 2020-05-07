@@ -11,7 +11,9 @@ if len(args) != 2:
     #raise Exception
     sys.exit()
 
-BG_COLOR = 0 # Background color : Black(0, 0, 0)
+# BG_COLOR = 0    # Background color : Black(0, 0, 0)
+BG_COLOR = 64   # Background color : Gray(64, 64, 64)
+print("BGColor                     : ", BG_COLOR)
 
 def calc_mean_and_variance(_img_GRAY):
     print("Input image (GRAY)          : ", _img_GRAY.shape) # （height, width, channel）
@@ -34,7 +36,7 @@ def calc_mean_and_variance(_img_GRAY):
     # print("Min :", np.min(_img))
     print("\nMean:", round(img_GRAY_non_bgcolor.mean(), 2), "(pixel value)")
     print("Var:", round(img_GRAY_non_bgcolor.var(), 2), "((pixel value)^2)")
-    print("SD:", round(img_GRAY_non_bgcolor.std(), 2), "(pixel value)")
+    # print("SD:", round(img_GRAY_non_bgcolor.std(), 2), "(pixel value)")
 
 if __name__ == "__main__":
     img_in_GRAY = cv2.imread(args[1], cv2.IMREAD_GRAYSCALE)

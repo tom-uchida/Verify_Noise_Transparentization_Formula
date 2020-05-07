@@ -51,11 +51,10 @@ int main(int argc, char **argv) {
     // Variables
     kvs::MersenneTwister        uniRand;
     kvs::BoxMuller              gaussRand;
-    std::vector<kvs::Vector3d>  plane_points;
-    kvs::Vector3d               plane_point;
+    // std::vector<kvs::Vector3d>  plane_points;
+    // kvs::Vector3d               plane_point;
     double x, y, z; x = y = z = 0.0;
-    int r_noised, g_noised, b_noised;
-    r_noised = g_noised = b_noised = c_pt;
+    int r_noised, g_noised, b_noised; r_noised = g_noised = b_noised = c_pt;
 
     // Add Gaussian noise to "color" of all 3D points.
     for ( int i = 0 ; i < num_of_points; i++ ) {
@@ -67,9 +66,11 @@ int main(int argc, char **argv) {
         // N(0, 1) → μ=0, σ^2=1
 
         // Add Gaussian noise
-        r_noised = gaussRand.rand(c_pt, sigma2);
-        g_noised = gaussRand.rand(c_pt, sigma2);
-        b_noised = gaussRand.rand(c_pt, sigma2);
+        // r_noised = gaussRand.rand(c_pt, sigma2);
+        // g_noised = gaussRand.rand(c_pt, sigma2);
+        // b_noised = gaussRand.rand(c_pt, sigma2);
+        r_noised = g_noised = b_noised = gaussRand.rand(c_pt, sigma2);
+        if ( i == 0 ) std::cout << "\n(R,G,B) = (" << r_noised << "," << g_noised << "," << b_noised << ")" << std::endl;
         if (r_noised < 0)    r_noised = 0;
         if (r_noised > 255)  r_noised = 255;
         if (g_noised < 0)    g_noised = 0;

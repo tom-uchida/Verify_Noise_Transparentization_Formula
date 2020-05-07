@@ -1,3 +1,5 @@
+.vscode/
+
 Plane/.vscode
 Plane/Generate_Point_Cloud/SPBR_DATA/
 Plane/Generate_Point_Cloud/*.o
