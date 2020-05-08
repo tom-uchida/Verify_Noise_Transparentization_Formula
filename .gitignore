@@ -1,10 +1,18 @@
 .vscode/
-
 Plane/.vscode
-Plane/Generate_Point_Cloud/SPBR_DATA/
-Plane/Generate_Point_Cloud/*.o
-Plane/Generate_Point_Cloud/*.kvs
-Plane/Generate_Point_Cloud/*.csv
 
+Plane/GRAY/Generate_Point_Cloud/SPBR_DATA/
+Plane/GRAY/Generate_Point_Cloud/*.o
+Plane/GRAY/Generate_Point_Cloud/*.kvs
+Plane/GRAY/Generate_Point_Cloud/*.csv
 Plane/GRAY/IMAGE_DATA/
 Plane/GRAY/SPBR_DATA/
+Plane/GRAY/*.zip
+
+Plane/RGB/Generate_Point_Cloud/SPBR_DATA/
+Plane/RGB/Generate_Point_Cloud/*.o
+Plane/RGB/Generate_Point_Cloud/*.kvs
+Plane/RGB/Generate_Point_Cloud/*.csv
+Plane/RGB/IMAGE_DATA/
+Plane/RGB/SPBR_DATA/
+Plane/RGB/*.zip
