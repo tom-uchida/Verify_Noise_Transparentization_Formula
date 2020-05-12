@@ -16,3 +16,10 @@ color/RGB/Generate_Point_Cloud/*.csv
 color/RGB/IMAGE_DATA/
 color/RGB/SPBR_DATA/
 color/RGB/*.zip
+
+coords/Generate_Point_Cloud/SPBR_DATA/
+coords/Generate_Point_Cloud/PLY_DATA/
+coords/Generate_Point_Cloud/IMAGE_DATA/
+coords/Generate_Point_Cloud/*.o
+coords/Generate_Point_Cloud/*.kvs
+coords/Generate_Point_Cloud/*.csv
