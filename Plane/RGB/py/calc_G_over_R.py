@@ -29,29 +29,7 @@ def calc_R_by_G(_img_RGB):
 
     # Calc variance of G/R
     var_G_over_R = np.var(G_over_R)
-    print("Variance of G/R:", round(var_G_over_R, 4), "(pixel value)^2")
-
-
-
-# When the background color is "Green"
-def calc_mean_of_RGB_value(_img_RGB):
-    R, G, B = _img_RGB[:,:,0], _img_RGB[:,:,1], _img_RGB[:,:,2]
-
-    # Get indexes of pixels on which the point color is projected
-    idx_point_color = ~((R == 0) & (G == 128) & (B == 0))
-    # idx_point_color = R == 255
-    num_of_point_color_pixels = np.count_nonzero(idx_point_color)
-    print("\nNum. of point color pixels:", num_of_point_color_pixels, "(pixels)")
-
-    mean_R = np.mean(R[idx_point_color])
-    mean_G = np.mean(G[idx_point_color])
-    mean_B = np.mean(B[idx_point_color])
-
-    print("Mean of R:", round(mean_R, 2), "(pixel value)")
-    print("Mean of G:", round(mean_G, 2), "(pixel value)")
-    print("Mean of B:", round(mean_B, 2), "(pixel value)\n")
-
-
+    print("Variance of G/R:", round(var_G_over_R, 4), "(pixel value)^2\n")
 
 if __name__ == "__main__":
     # read input image
@@ -60,5 +38,4 @@ if __name__ == "__main__":
     # convert color BGR to RGB
     img_RGB = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2RGB)
 
-    # calc_R_by_G(img_RGB)
-    calc_mean_of_RGB_value(img_RGB)
+    calc_R_by_G(img_RGB)

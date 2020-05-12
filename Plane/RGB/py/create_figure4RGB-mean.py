@@ -18,15 +18,15 @@ if len(args) != 2:
 csv = pd.read_csv(args[1])
 
 # Convert to numpy array
-L_mean_var = csv.values
-print(L_mean_var.shape)
-print(L_mean_var)
+L_mean = csv.values
+print(L_mean.shape)
+print(L_mean)
 
 # Get each column
-L       = L_mean_var[:,0]
-mean_R  = L_mean_var[:,1]
-mean_G  = L_mean_var[:,2]
-mean_B  = L_mean_var[:,3]
+L       = L_mean[:,0]
+mean_R  = L_mean[:,1]
+mean_G  = L_mean[:,2]
+mean_B  = L_mean[:,3]
 
 # Creat figure
 plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
