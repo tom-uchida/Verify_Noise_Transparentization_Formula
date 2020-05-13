@@ -11,13 +11,19 @@ if len(args) != 2:
 
 # When the background color is "black"
 def calc_G_over_R(_img_RGB):
-    R, G, B = _img_RGB[:,:,0], _img_RGB[:,:,1], _img_RGB[:,:,2]
+    # Cropping core pixels of the input image
+    x_start, x_end = int(_img_RGB.shape[0]*0.2), int(_img_RGB.shape[0]*0.8)
+    y_start, y_end = int(_img_RGB.shape[1]*0.2), int(_img_RGB.shape[1]*0.8)
+    img_RGB_cropped = _img_RGB[x_start:x_end, y_start:y_end, :]
+    print("\nCropped.")
 
     # Get indexes of pixels on which the point color is projected
+    # R, G, B = _img_RGB[:,:,0], _img_RGB[:,:,1], _img_RGB[:,:,2]
+    R, G, B = img_RGB_cropped[:,:,0], img_RGB_cropped[:,:,1], img_RGB_cropped[:,:,2]
     idx_point_color = ~((R == 0) & (G == 0) & (B == 0))
     # idx_point_color = R == 255
     num_of_point_color_pixels = np.count_nonzero(idx_point_color)
-    print("\nNum. of point color pixels:", num_of_point_color_pixels, "(pixels)")
+    print("Num. of point color pixels:", num_of_point_color_pixels, "(pixels)")
 
     # Calc G/R
     G_over_R = G[idx_point_color] / R[idx_point_color]

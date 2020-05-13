@@ -49,8 +49,8 @@ int main(int argc, char **argv) {
     fout << "#/LOD 0"                << std::endl;
     fout << "#/EndHeader"            << std::endl;
 
-    // Stochastically, add Gaussian noise to point cloud
-    std::cout << "Adding Gaussian noise... (with " << ratio_for_add_noise*100 << "%)\n" << std::endl;
+    // Stochastically, add noise to point cloud
+    std::cout << "Adding noise... (with " << ratio_for_add_noise*100 << "%)\n" << std::endl;
 
     // Generate the point cloud
     for ( int i = 0 ; i < num_of_points; i++ ) {
@@ -66,7 +66,8 @@ int main(int argc, char **argv) {
             // Add Gaussian noise
             // x += gaussRand.rand(0, sigma2);
             // y += gaussRand.rand(0, sigma2);
-            z += gaussRand.rand(0, sigma2);
+            // z += gaussRand.rand(0, sigma2);
+            z = uniRand()*0.02 - 0.01;
 
             // Write to .spbr file 
             fout << x   << " " << y << " " << z << " ";

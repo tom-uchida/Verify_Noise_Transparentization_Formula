@@ -34,12 +34,10 @@ plt.xlabel('$L$', fontsize=14)
 
 # Mean
 # plt.scatter(L, mean, color='black')
-# plt.hlines(82.433541, 1, 100, "red", linestyles='dashed')
-# plt.text(1, 87, r"$C_\mathrm{theorical} \approx 82$", color='red', fontsize='14')
-# plt.hlines(104.892229, 1, 100, "red", linestyles='dashed')
-# plt.text(1, 110, r"$C_\mathrm{theorical} \approx 105$", color='red', fontsize='14')
-# plt.yticks([0, 20, 40, 60, 80, 100, 120, 140], fontsize=14)
-# plt.ylabel('Mean pixel value', fontsize=14)
+# plt.hlines(0.9, 1, 100, "red", linestyles='dashed')
+# plt.text(1, 0.8, r"$r_\mathrm{theorical} = 0.9$", color='red', fontsize='14')
+# plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], fontsize=14)
+# plt.ylabel(r'$r_{\mathrm{G/R}}$', fontsize=14)
 
 # Variance
 # plt.scatter(L, var, color='black')
