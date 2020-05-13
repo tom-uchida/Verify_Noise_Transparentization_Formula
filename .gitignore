@@ -23,3 +23,5 @@ coords/Generate_Point_Cloud/IMAGE_DATA/
 coords/Generate_Point_Cloud/*.o
 coords/Generate_Point_Cloud/*.kvs
 coords/Generate_Point_Cloud/*.csv
+coords/SPBR_DATA/
+coords/IMAGE_DATA/

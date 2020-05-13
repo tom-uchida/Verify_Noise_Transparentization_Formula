@@ -9,7 +9,6 @@ if len(args) != 5:
     print("USAGE : $ python calc_mean_var_of_RGB.py [input_image_data] [BGC-R] [BGC-G] [BGC-B]")
     sys.exit()
 
-# When the background color is "Black"
 def calc_mean_of_RGB_value(_img_RGB):
     R, G, B = _img_RGB[:,:,0], _img_RGB[:,:,1], _img_RGB[:,:,2]
 

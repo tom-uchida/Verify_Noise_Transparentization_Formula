@@ -10,16 +10,12 @@
 #include <vector>
 #include <math.h>
 
-#define  N_TOTAL      1e07
-#define  TRUTH_MAX    0.99
-#define  TRUTH_MIN    0.01
-
 const char OUTPUT_NOISED_SPBR[] = "SPBR_DATA/plane_coords_noise.spbr";
 
 int main(int argc, char **argv) {
-    if ( argc != 3 ) {
-        std::cout << "USAGE  : " << argv[0] << " [sigma2(variance)] [ratio_for_adding_noise]" << std::endl;
-        std::cout << "EXAMPLE: " << argv[0] << " 0.01 0.1" << std::endl;
+    if ( argc != 4 ) {
+        std::cout << "USAGE  : " << argv[0] << " [num. of points] [sigma2(variance)] [ratio_for_adding_noise]" << std::endl;
+        std::cout << "EXAMPLE: " << argv[0] << "1000000 0.01 0.1" << std::endl;
         exit(1);
     }
 
@@ -28,8 +24,9 @@ int main(int argc, char **argv) {
     std::string     of_name( OUTPUT_NOISED_SPBR ); 
     fout.open( of_name );
 
-    float sigma2 = atof(argv[1]);
-    std::cout << "Number of points: " << N_TOTAL    << std::endl;
+    int num_of_points = atoi(argv[1]);
+    float sigma2 = atof(argv[2]);
+    std::cout << "Number of points: " << num_of_points << std::endl;
     std::cout << "Sigma2(Variance): " << sigma2     << std::endl;
     std::cout << "Sigma: " << sqrtf(sigma2)         << std::endl;
 
@@ -40,7 +37,7 @@ int main(int argc, char **argv) {
     double x, y, z; x = y = z = 0.0;
     kvs::BoxMuller  gaussRand;
     kvs::Vector3d   point;
-    float ratio_for_add_noise = atof(argv[2]);
+    float ratio_for_add_noise = atof(argv[3]);
     int noise_counter = 0;
 
     // Set SPBR header
@@ -56,19 +53,19 @@ int main(int argc, char **argv) {
     std::cout << "Adding Gaussian noise... (with " << ratio_for_add_noise*100 << "%)\n" << std::endl;
 
     // Generate the point cloud
-    for ( int i = 0 ; i < N_TOTAL; i++ ) {
+    for ( int i = 0 ; i < num_of_points; i++ ) {
         x = uniRand(); // random number [0...1] for x
         y = uniRand(); // random number [0...1] for y
         z = 0.0;
 
         // Noise point (Red)
-        if ( i < N_TOTAL*ratio_for_add_noise ) {
+        if ( i < num_of_points*ratio_for_add_noise ) {
             // N(μ, σ^2)
             // N(0, 1) → μ=0, σ^2=1
 
             // Add Gaussian noise
-            x += gaussRand.rand(0, sigma2);
-            y += gaussRand.rand(0, sigma2);
+            // x += gaussRand.rand(0, sigma2);
+            // y += gaussRand.rand(0, sigma2);
             z += gaussRand.rand(0, sigma2);
 
             // Write to .spbr file 
@@ -87,8 +84,8 @@ int main(int argc, char **argv) {
         } // end if
 
         // Show progress
-        if ( (i+1) % int(N_TOTAL*0.1) == 0 ) {
-            std::cout << (i*100)/N_TOTAL << "\% done." << std::endl;
+        if ( (i+1) % int(num_of_points*0.1) == 0 ) {
+            std::cout << (i*100)/num_of_points+1 << "\% done." << std::endl;
         }
     } // end for
 
