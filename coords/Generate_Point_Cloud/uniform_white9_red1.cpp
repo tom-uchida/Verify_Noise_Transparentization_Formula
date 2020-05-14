@@ -58,30 +58,22 @@ int main(int argc, char **argv) {
         y = uniRand(); // random number [0...1] for y
         z = 0.0;
 
-        // Noise point (Red)
         if ( i < num_of_points*ratio_for_add_noise ) {
-            // N(μ, σ^2)
-            // N(0, 1) → μ=0, σ^2=1
-
-            // Add Gaussian noise
-            // x += gaussRand.rand(0, sigma2);
-            // y += gaussRand.rand(0, sigma2);
-            // z += gaussRand.rand(0, sigma2);
-            z = uniRand()*0.02 - 0.01;
-
-            // Write to .spbr file 
-            fout << x   << " " << y << " " << z << " ";
-            fout << 0   << " " << 0 << " " << 0 << " ";
-            fout << 255 << " " << 0 << " " << 0 << std::endl; // Red
-
-            // Count number of noised points
+            z += gaussRand.rand(0, sigma2);
             noise_counter++;
+        } // end if
 
-        // Not noise point (White)
-        } else {
+        // Red
+        if ( uniRand() <= 0.1 ) {
             fout << x   << " " << y << " " << z << " ";
             fout << 0   << " " << 0 << " " << 0 << " ";
-            fout << 255 << " " << 255 << " " << 255 << std::endl; // White
+            fout << 255 << " " << 0 << " " << 0 << std::endl;
+
+        // White
+        } else {
+            fout << x   << " " << y   << " " << z   << " ";
+            fout << 0   << " " << 0   << " " << 0   << " ";
+            fout << 255 << " " << 255 << " " << 255 << std::endl;
         } // end if
 
         // Show progress
