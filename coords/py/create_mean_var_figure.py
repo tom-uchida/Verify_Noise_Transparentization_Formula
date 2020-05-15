@@ -33,18 +33,19 @@ plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
 plt.xlabel('$L$', fontsize=14)
 
 # Mean
-plt.scatter(L, mean, color='black')
-plt.hlines(0.9, 1, 100, "red", linestyles='dashed')
-plt.text(1, 0.8, r"$r_\mathrm{theorical} = 0.9$", color='red', fontsize='14')
-plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], fontsize=14)
-plt.ylabel(r'$r_{\mathrm{G/R}}$', fontsize=14)
+# plt.scatter(L, mean, color='black')
+# plt.hlines(0.9, 1, 100, "red", linestyles='dashed')
+# plt.text(1, 0.8, r"$r_\mathrm{theorical} = 0.9$", color='red', fontsize='14')
+# plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], fontsize=14)
+# plt.ylabel(r'$r_{\mathrm{G/R}}$', fontsize=14)
 
 # Variance
 # plt.scatter(L, var, color='black')
 # plt.ylabel('$\mathrm{Variance}$', fontsize=14)
-# plt.scatter(L, var**(-1), color='black')
-# plt.ylabel('$1 / \mathrm{Variance}$', fontsize=14)
+plt.scatter(L, var**(-1), color='black')
+plt.ylabel('$1 / \mathrm{Variance}$', fontsize=14)
 # plt.yticks([0, 100, 200, 300, 400, 500], fontsize=14)
+plt.yticks([0, 100, 200, 300, 400], fontsize=14)
 # plt.yticks([0.00, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
 # plt.yticks([0.00, 0.01, 0.02], fontsize=14)
 
