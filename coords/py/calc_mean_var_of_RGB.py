@@ -13,7 +13,7 @@ def calc_mean_of_RGB_value(_img_RGB):
     R, G, B = _img_RGB[:,:,0], _img_RGB[:,:,1], _img_RGB[:,:,2]
 
     # Get indexes of pixels on which the point color is projected
-    idx_point_color = ~((R == BGC_R) & (G == BGC_R) & (B == BGC_R))
+    idx_point_color = ~((R == BGC_R) & (G == BGC_G) & (B == BGC_B))
     # idx_point_color = R == 255
     num_of_point_color_pixels = np.count_nonzero(idx_point_color)
     print("\nNum. of point color pixels:", num_of_point_color_pixels, "(pixels)")
