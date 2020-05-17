@@ -33,7 +33,7 @@ plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
 plt.xlabel('$L$', fontsize=14)
 
 # Mean
-plt.scatter(L, M_mean, color='black')
+plt.scatter(L, M_mean, color='black', marker="")
 plt.scatter(L, M_max, color='red')
 plt.xticks([0, 20, 40, 60, 80, 100], fontsize=14)
 plt.yticks([0, 20, 40, 60, 80, 100], fontsize=14)

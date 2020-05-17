@@ -44,10 +44,7 @@ plt.xlabel('$L$', fontsize=14)
 # plt.ylabel('$\mathrm{Variance}$', fontsize=14)
 plt.scatter(L, var**(-1), color='black')
 plt.ylabel('$1 / \mathrm{Variance}$', fontsize=14)
-# plt.yticks([0, 100, 200, 300, 400, 500], fontsize=14)
-plt.yticks([0, 100, 200, 300, 400], fontsize=14)
-# plt.yticks([0.00, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
-# plt.yticks([0.00, 0.01, 0.02], fontsize=14)
+plt.yticks([0, 100, 200, 300, 400, 500], fontsize=14)
 
 
 # plt.grid()
