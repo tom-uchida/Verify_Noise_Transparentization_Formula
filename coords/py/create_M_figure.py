@@ -28,19 +28,23 @@ M_mean  = L_mean_max[:,1]
 M_max   = L_mean_max[:,2]
 
 # Creat figure
-# plt.figure(figsize=(8, 4))
 plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
 plt.xlabel('$L$', fontsize=14)
 
-# Mean
-plt.scatter(L, M_mean, color='black', marker="")
-plt.scatter(L, M_max, color='red')
-plt.xticks([0, 20, 40, 60, 80, 100], fontsize=14)
+# Draw a linear function(Theoretical linear function)
+alpha = 0.5
+L_R = np.arange(1, 100, 1)
+M = alpha * L_R
+plt.plot(L_R, M, color='red', label=r"$M= \alpha L (\alpha=0.5)$")
+
+# M
+plt.scatter(L, M_max, color='black', label=r"$M_\mathrm{max}$", marker=",")
+plt.scatter(L, M_mean, color='black', label=r"$M_\mathrm{mean}$", marker="o")
 plt.yticks([0, 20, 40, 60, 80, 100], fontsize=14)
 plt.ylabel('$M$', fontsize=14)
 
 # plt.grid()
-# plt.legend(fontsize=14)
+plt.legend(fontsize=14)
 # plt.gca().set_aspect('equal')
 
 plt.show()
