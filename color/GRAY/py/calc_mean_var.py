@@ -11,8 +11,8 @@ if len(args) != 2:
     #raise Exception
     sys.exit()
 
-# BG_COLOR = 0    # Background color : Black(0, 0, 0)
-BG_COLOR = 64   # Background color : Gray(64, 64, 64)
+BG_COLOR = [0,0,0]      # Background color : Black(0, 0, 0)
+# BG_COLOR = [64,64,64]   # Background color : Gray(64, 64, 64)
 print("BGColor                     : ", BG_COLOR)
 
 def calc_mean_and_variance(_img_GRAY):
@@ -23,7 +23,7 @@ def calc_mean_and_variance(_img_GRAY):
     print("Number of pixels            : ", N_all, "(pixels)")
 
     # Exclude BGColor(Black)
-    img_GRAY_non_bgcolor = _img_GRAY[_img_GRAY != BG_COLOR]
+    img_GRAY_non_bgcolor = _img_GRAY[_img_GRAY != BG_COLOR[0]]
     print("Number of NonBGColor pixels : ", img_GRAY_non_bgcolor.shape[0], "(pixels)")
 
     # NonBGColor_num = np.sum(_img_GRAY != BG_COLOR)

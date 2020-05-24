@@ -10,12 +10,12 @@ if len(args) != 2:
     sys.exit()
 
 # When the background color is "black"
-def calc_G_over_R(_img_RGB):
+def calc_statistical_indicators(_img_RGB):
     # Cropping core pixels of the input image
     x_start, x_end = int(_img_RGB.shape[0]*0.2), int(_img_RGB.shape[0]*0.8)
     y_start, y_end = int(_img_RGB.shape[1]*0.2), int(_img_RGB.shape[1]*0.8)
     img_RGB_cropped = _img_RGB[x_start:x_end, y_start:y_end, :]
-    print("\nCropped.")
+    print("\nCropped core pixels of the input image.")
 
     # Get indexes of pixels on which the point color is projected
     # R, G, B = _img_RGB[:,:,0], _img_RGB[:,:,1], _img_RGB[:,:,2]
@@ -27,15 +27,21 @@ def calc_G_over_R(_img_RGB):
 
     # Calc G/R
     G_over_R = G[idx_point_color] / R[idx_point_color]
-    # print("test:", G_over_R[:10])
+    
+    # Calc B/R
+    B_over_R = B[idx_point_color] / R[idx_point_color]
 
-    # Calc mean of G/R
+    # Calc mean of mean of both G/R and B/R
     mean_G_over_R = np.mean(G_over_R)
-    print("Mean of G/R:", round(mean_G_over_R, 4), "(pixel value)")
+    mean_B_over_R = np.mean(B_over_R)
+    mean = (mean_G_over_R + mean_B_over_R) / 2
+    print("Mean of \"mean\" of G/R and B/R:", round(mean, 4), "(pixel value)")
 
-    # Calc variance of G/R
+    # Calc mean of variance of both G/R and B/R
     var_G_over_R = np.var(G_over_R)
-    print("Variance of G/R:", round(var_G_over_R, 4), "(pixel value)^2\n")
+    var_B_over_R = np.var(B_over_R)
+    var = (var_G_over_R + var_B_over_R) / 2
+    print("Mean of \"variance\" of G/R and B/R:", round(var, 4), "(pixel value)^2\n")
 
 if __name__ == "__main__":
     # read input image
@@ -44,4 +50,4 @@ if __name__ == "__main__":
     # convert color BGR to RGB
     img_RGB = cv2.cvtColor(img_BGR, cv2.COLOR_BGR2RGB)
 
-    calc_G_over_R(img_RGB)
+    calc_statistical_indicators(img_RGB)

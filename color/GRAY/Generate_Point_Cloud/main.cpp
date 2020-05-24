@@ -10,10 +10,6 @@
 #include <vector>
 #include <math.h>
 
-#define  N_TOTAL      10000000
-#define  TRUTH_MAX    0.99
-#define  TRUTH_MIN    0.01
-
 const char OUTPUT_FILE_NAME[] = "SPBR_DATA/plane_color_noise.spbr";
 
 int main(int argc, char **argv) {
@@ -39,7 +35,6 @@ int main(int argc, char **argv) {
     fout << "#/SPBR_ASCII_Data"      << std::endl;
     fout << "#/RepeatLevel 1"        << std::endl;
     fout << "#/BGColorRGBByte 0 0 0" << std::endl;
-    fout << "#/StandardBoundingBox -0.8 -0.8 0 0.8 0.8 0" << std::endl;
     fout << "#/ImageResolution 512"  << std::endl;
     fout << "#/Shading 0"            << std::endl;
     fout << "#/LOD 0"                << std::endl;
