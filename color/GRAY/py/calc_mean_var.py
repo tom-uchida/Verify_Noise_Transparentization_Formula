@@ -18,23 +18,21 @@ print("BGColor                     : ", BG_COLOR)
 def calc_mean_and_variance(_img_GRAY):
     print("Input image (GRAY)          : ", _img_GRAY.shape) # （height, width, channel）
 
-    # Calc all number of pixels of the input image
+    # Calc number of pixels of the input image
     N_all = _img_GRAY.shape[0] * _img_GRAY.shape[1]
     print("Number of pixels            : ", N_all, "(pixels)")
 
-    # Exclude BGColor(Black)
-    img_GRAY_non_bgcolor = _img_GRAY[_img_GRAY != BG_COLOR[0]]
+    # Cropping core pixels of the input image
+    x_start, x_end = int(_img_GRAY.shape[0]*0.2), int(_img_GRAY.shape[0]*0.8)
+    y_start, y_end = int(_img_GRAY.shape[1]*0.2), int(_img_GRAY.shape[1]*0.8)
+    img_GRAY_cropped = _img_GRAY[x_start:x_end, y_start:y_end]
+    print("\nCropped core pixels of the input image.")
+    
+    # Exclude BGColor(Black) pixels
+    img_GRAY_non_bgcolor = img_GRAY_cropped[img_GRAY_cropped != BG_COLOR[0]]
     print("Number of NonBGColor pixels : ", img_GRAY_non_bgcolor.shape[0], "(pixels)")
-
-    # NonBGColor_num = np.sum(_img_GRAY != BG_COLOR)
-    # print("\nN_all_nonzero: ", NonBGColor_num, "(pixels)")
-    # BGColor_num = np.sum(_img_GRAY == BG_COLOR)
-    # print("Num of BGColor pixels: ", BGColor_num )
-    # print("\ntest:", NonBGColor_num + BGColor_num)
-
-    # print("\nMax :", np.max(_img))
-    # print("Min :", np.min(_img))
-    print("\nMean:", round(img_GRAY_non_bgcolor.mean(), 2), "(pixel value)")
+    
+    print("Mean:", round(img_GRAY_non_bgcolor.mean(), 2), "(pixel value)")
     print("Var:", round(img_GRAY_non_bgcolor.var(), 2), "((pixel value)^2)")
     # print("SD:", round(img_GRAY_non_bgcolor.std(), 2), "(pixel value)")
 

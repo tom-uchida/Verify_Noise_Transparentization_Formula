@@ -28,7 +28,7 @@ mean = L_mean_var[:,1]
 var  = L_mean_var[:,2]
 
 # Creat figure
-# plt.figure(figsize=(8, 4))
+plt.figure(figsize=(10, 6))
 plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
 plt.xlabel('$L$', fontsize=14)
 
@@ -42,14 +42,12 @@ plt.xlabel('$L$', fontsize=14)
 # plt.ylabel('Mean pixel value', fontsize=14)
 
 # Variance
-# plt.scatter(L, var, color='black')
-# plt.ylabel('$\mathrm{Variance}$', fontsize=14)
+plt.scatter(L, var, color='black')
+plt.ylabel('$V_\mathrm{p}$', fontsize=14)
 # plt.yticks([0, 100, 200, 300, 400, 500, 600, 700], fontsize=14)
-plt.scatter(L, var**(-1), color='black')
-plt.ylabel('$1 / \mathrm{Variance}$', fontsize=14)
-plt.yticks([0.00, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
-# plt.yticks([0.00, 0.01, 0.02], fontsize=14)
-# plt.yticks([0.00, 0.05, 0.1, 0.15, 0.2], fontsize=14)
+# plt.scatter(L, var**(-1), color='black')
+# plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
+# plt.yticks([0, 0.002, 0.004, 0.006, 0.008, 0.010], fontsize=14)
 
 # plt.grid()
 # plt.legend(fontsize=14)

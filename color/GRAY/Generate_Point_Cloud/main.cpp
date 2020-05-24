@@ -26,10 +26,11 @@ int main(int argc, char **argv) {
     int num_of_points = atoi(argv[1]);
     int c_pt = atoi(argv[2]);
     float sigma2 = atof(argv[3]);
+    float sigma = sqrtf(sigma2);
     std::cout << "Number of points: " << num_of_points << std::endl;
     std::cout << "C_pt: " << +c_pt << std::endl;
     std::cout << "sigma2(variance): " << sigma2 << std::endl;
-    std::cout << "sigma(standard deviation): " << sqrtf(sigma2) << "\n" << std::endl;
+    std::cout << "sigma(standard deviation): " << sigma << "\n" << std::endl;
 
     // Set SPBR header
     fout << "#/SPBR_ASCII_Data"      << std::endl;
@@ -54,26 +55,31 @@ int main(int argc, char **argv) {
         y = uniRand(); // random number [0...1] for y
         z = 0.0;
 
-        // N(μ, σ^2)
-        // N(0, 1) → μ=0, σ^2=1
-
         // Add Gaussian noise
-        // r_noised = gaussRand.rand(c_pt, sigma2);
-        // g_noised = gaussRand.rand(c_pt, sigma2);
-        // b_noised = gaussRand.rand(c_pt, sigma2);
-        r_noised = g_noised = b_noised = gaussRand.rand(c_pt, sigma2);
-        if ( i == 0 ) std::cout << "\n(R,G,B) = (" << r_noised << "," << g_noised << "," << b_noised << ")" << std::endl;
-        if (r_noised < 0)    r_noised = 0;
-        if (r_noised > 255)  r_noised = 255;
-        if (g_noised < 0)    g_noised = 0;
-        if (g_noised > 255)  g_noised = 255;
-        if (b_noised < 0)    b_noised = 0;
-        if (b_noised > 255)  b_noised = 255;
+        if ( i < num_of_points*0.1 ) {
+            r_noised = g_noised = b_noised = gaussRand.rand(c_pt, sigma);
+            if ( i <= 20 ) {
+                std::cout << "(R,G,B) = (" << r_noised << "," << g_noised << "," << b_noised << ")" << std::endl;
+            }
 
-        // Write to .spbr file 
-        fout << x << " " << y << " " << z << " ";
-        fout << 0 << " " << 0 << " " << 0 << " ";
-        fout << r_noised << " " << g_noised << " " << b_noised << "\n";
+            if (r_noised < 0)    r_noised = 0;
+            if (r_noised > 255)  r_noised = 255;
+            if (g_noised < 0)    g_noised = 0;
+            if (g_noised > 255)  g_noised = 255;
+            if (b_noised < 0)    b_noised = 0;
+            if (b_noised > 255)  b_noised = 255;
+                
+            // Noise point
+            fout << x        << " " << y        << " " << z         << " ";
+            fout << 0        << " " << 0        << " " << 0         << " ";
+            fout << r_noised << " " << g_noised << " " << b_noised  << "\n";
+
+        } else {
+            // Non-noise point
+            fout << x   << " " << y     << " " << z     << " ";
+            fout << 0   << " " << 0     << " " << 0     << " ";
+            fout << 255 << " " << 255   << " " << 255   << "\n";
+        } // end if
 
         // Show progress
         if ( (i+1) % int(num_of_points*0.1) == 0 ) {
