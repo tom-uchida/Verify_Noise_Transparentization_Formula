@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
         z = 0.0;
 
         // Add Gaussian noise
-        if ( i < num_of_points*0.1 ) {
+        // if ( i < num_of_points*0.1 ) {
             r_noised = g_noised = b_noised = gaussRand.rand(c_pt, sigma);
             if ( i <= 20 ) {
                 std::cout << "(R,G,B) = (" << r_noised << "," << g_noised << "," << b_noised << ")" << std::endl;
@@ -74,12 +74,12 @@ int main(int argc, char **argv) {
             fout << 0        << " " << 0        << " " << 0         << " ";
             fout << r_noised << " " << g_noised << " " << b_noised  << "\n";
 
-        } else {
-            // Non-noise point
-            fout << x   << " " << y     << " " << z     << " ";
-            fout << 0   << " " << 0     << " " << 0     << " ";
-            fout << 255 << " " << 255   << " " << 255   << "\n";
-        } // end if
+        // } else {
+        //     // Non-noise point
+        //     fout << x   << " " << y     << " " << z     << " ";
+        //     fout << 0   << " " << 0     << " " << 0     << " ";
+        //     fout << 255 << " " << 255   << " " << 255   << "\n";
+        // } // end if
 
         // Show progress
         if ( (i+1) % int(num_of_points*0.1) == 0 ) {

@@ -39,7 +39,7 @@ plt.xlabel('$L$', fontsize=14)
 
 # Number of points in an ensemble
 plt.scatter(L, n_over_L, color='black')
-# plt.yticks([1e5, 1.1e5, 1.2e5, 1.3e5, 1.4e5, 1.5e5], fontsize=14)
+plt.yticks([0, 20000, 40000, 60000, 80000, 100000, 120000], fontsize=14)
 plt.ylabel('Number of points in an ensemble', fontsize=14)
 
 # plt.grid()

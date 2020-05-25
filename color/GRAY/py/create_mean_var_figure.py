@@ -28,26 +28,28 @@ mean = L_mean_var[:,1]
 var  = L_mean_var[:,2]
 
 # Creat figure
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(8, 6))
 plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
 plt.xlabel('$L$', fontsize=14)
 
 # Mean
-# plt.scatter(L, mean, color='black')
+plt.scatter(L, mean, color='black')
 # plt.hlines(82.433541, 1, 100, "red", linestyles='dashed')
 # plt.text(1, 87, r"$C_\mathrm{theorical} \approx 82$", color='red', fontsize='14')
 # plt.hlines(104.892229, 1, 100, "red", linestyles='dashed')
 # plt.text(1, 110, r"$C_\mathrm{theorical} \approx 105$", color='red', fontsize='14')
-# plt.yticks([0, 20, 40, 60, 80, 100, 120, 140], fontsize=14)
-# plt.ylabel('Mean pixel value', fontsize=14)
+plt.yticks([0, 50, 100, 150], fontsize=14)
+plt.ylabel('Mean pixel value', fontsize=14)
 
 # Variance
-plt.scatter(L, var, color='black')
-plt.ylabel('$V_\mathrm{p}$', fontsize=14)
-# plt.yticks([0, 100, 200, 300, 400, 500, 600, 700], fontsize=14)
+# plt.scatter(L, var, color='black')
+# plt.ylabel('$V_\mathrm{p}$', fontsize=14)
+# plt.yticks([0, 500, 1000, 1500], fontsize=14)
+
+# 1/Variance
 # plt.scatter(L, var**(-1), color='black')
 # plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
-# plt.yticks([0, 0.002, 0.004, 0.006, 0.008, 0.010], fontsize=14)
+# plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
 
 # plt.grid()
 # plt.legend(fontsize=14)
