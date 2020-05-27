@@ -35,7 +35,7 @@ plt.xlabel('$L$', fontsize=14)
 alpha = 0.5
 L_R = np.arange(1, 100, 1)
 M = alpha * L_R
-plt.plot(L_R, M, color='red', label=r"$M= \alpha L (\alpha=0.5)$")
+plt.plot(L_R, M, "--", color='red', label=r"$M= \alpha L (\alpha=0.5)$")
 
 # M
 plt.scatter(L, M_max, color='black', label=r"$M_\mathrm{max}$", marker=",")
