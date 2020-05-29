@@ -1,6 +1,7 @@
 # calc_M.py
 #   Tomomasa Uchida
-#   2020/05/16
+#       2020/05/16
+#       2020/05/29
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -56,7 +57,7 @@ def ReadIntermediateImages( _repeat_level, _image_resol, _serial_img_path ):
 
 
 
-def CalcM4EachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repeat_level, _image_resol ):
+def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repeat_level, _image_resol ):
     # Set repeat level
     L = _repeat_level
     
@@ -70,18 +71,26 @@ def CalcM4EachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repeat_
     idx_point_color = ~((_R_pixel_values == BG_color[0]) & (_G_pixel_values == BG_color[1]) & (_B_pixel_values == BG_color[2]))
 
     # Calc M for each corresponding pixel
-    M_array = np.empty( (_image_resol*1, _image_resol*1), float )
-    print("\nCalc M pixel by pixel ...")
-    for h in range( _image_resol ):     # height
-        for w in range( _image_resol ): # width
+    # M_array = np.empty( (_image_resol*1, _image_resol*1), float )
+    M_array = []
+    print("\nCalc. M pixel by pixel ...")
+    # for h in range( _image_resol ):     # height
+    #     for w in range( _image_resol ): # width
+    # Cropping core pixels of the input image
+    num_of_core_pixels = 0
+    for h in range( int(_image_resol*0.25), int(_image_resol*0.75) ):     # height
+        for w in range( int(_image_resol*0.25), int(_image_resol*0.75) ): # width
+            num_of_core_pixels += 1
 
+            # Count the value of M
             M = 0
             for l in range( L ):
                 if idx_point_color[h,w,l] == True:
                     M += 1
 
             # Save to M array
-            M_array[h,w] = M
+            # M_array[h,w] = M
+            M_array.append(M)
 
             # Show progress
             processing_ratio = 100.0 * (float)(h*_image_resol+w) / (float)(_image_resol**2)
@@ -91,9 +100,12 @@ def CalcM4EachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repeat_
         # end for w
     # end for h
 
-    M_mean = np.mean(M_array[M_array != 0])
-    M_max  = np.max(M_array[M_array != 0])
-    M_min  = np.min(M_array[M_array != 0])
+    # M_mean = np.mean(M_array[M_array != 0])
+    # M_max  = np.max(M_array[M_array != 0])
+    # M_min  = np.min(M_array[M_array != 0])
+    M_mean = np.mean(M_array)
+    M_max  = np.max(M_array)
+    M_min  = np.min(M_array)
     print("\nM_mean :", round(M_mean, 2))
     print("M_max  :", M_max)
     print("M_min  :", M_min, "\n")
@@ -115,5 +127,5 @@ if __name__ == "__main__":
     serial_img_path = args[1] + "/"
     R_pixel_values, G_pixel_values, B_pixel_values = ReadIntermediateImages( repeat_level, image_resol, serial_img_path )
 
-    # Calc M
-    CalcM4EachPixel( R_pixel_values, G_pixel_values, B_pixel_values, repeat_level, image_resol )
+    # Calc. M
+    CalcMforEachPixel( R_pixel_values, G_pixel_values, B_pixel_values, repeat_level, image_resol )
