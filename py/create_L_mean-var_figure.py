@@ -33,23 +33,24 @@ plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
 plt.xlabel('$L$', fontsize=14)
 
 # Mean
-plt.scatter(L, mean, color='black')
+# plt.scatter(L, mean, color='black')
 # plt.hlines(82.433541, 1, 100, "red", linestyles='dashed')
 # plt.text(1, 87, r"$C_\mathrm{theorical} \approx 82$", color='red', fontsize='14')
 # plt.hlines(104.892229, 1, 100, "red", linestyles='dashed')
 # plt.text(1, 110, r"$C_\mathrm{theorical} \approx 105$", color='red', fontsize='14')
-plt.yticks([0, 50, 100, 150], fontsize=14)
-plt.ylabel('Mean pixel value', fontsize=14)
+# plt.yticks([0, 50, 100, 150], fontsize=14)
+# plt.ylabel('Mean pixel value', fontsize=14)
 
 # Variance
 # plt.scatter(L, var, color='black')
 # plt.ylabel('$V_\mathrm{p}$', fontsize=14)
+# # plt.ylabel('Variance of pixel values', fontsize=14)
 # plt.yticks([0, 500, 1000, 1500], fontsize=14)
 
 # 1/Variance
-# plt.scatter(L, var**(-1), color='black')
-# plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
-# plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
+plt.scatter(L, var**(-1), color='black')
+plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
+plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
 
 # plt.grid()
 # plt.legend(fontsize=14)

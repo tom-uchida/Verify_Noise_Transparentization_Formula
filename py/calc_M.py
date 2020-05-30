@@ -78,8 +78,8 @@ def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repea
     #     for w in range( _image_resol ): # width
     # Cropping core pixels of the input image
     num_of_core_pixels = 0
-    for h in range( int(_image_resol*0.25), int(_image_resol*0.75) ):     # height
-        for w in range( int(_image_resol*0.25), int(_image_resol*0.75) ): # width
+    for h in range( int(_image_resol*0.2), int(_image_resol*0.8) ):     # height
+        for w in range( int(_image_resol*0.2), int(_image_resol*0.8) ): # width
             num_of_core_pixels += 1
 
             # Count the value of M
