@@ -27,9 +27,9 @@ int main(int argc, char **argv) {
     int c_pt = atoi(argv[2]);
     float sigma2 = atof(argv[3]);
     float sigma = sqrtf(sigma2);
-    std::cout << "Number of points: " << num_of_points << std::endl;
-    std::cout << "C_pt: " << +c_pt << std::endl;
-    std::cout << "sigma2(variance): " << sigma2 << std::endl;
+    std::cout << "Number of points: " << num_of_points          << std::endl;
+    std::cout << "C_pt: " << +c_pt                              << std::endl;
+    std::cout << "sigma2(variance): " << sigma2                 << std::endl;
     std::cout << "sigma(standard deviation): " << sigma << "\n" << std::endl;
 
     // Set SPBR header
