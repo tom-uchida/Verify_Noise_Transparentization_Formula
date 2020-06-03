@@ -42,15 +42,15 @@ plt.xlabel('$L$', fontsize=14)
 # plt.ylabel('Mean pixel value', fontsize=14)
 
 # Variance
-# plt.scatter(L, var, color='black')
-# plt.ylabel('$V_\mathrm{p}$', fontsize=14)
-# # plt.ylabel('Variance of pixel values', fontsize=14)
-# plt.yticks([0, 500, 1000, 1500], fontsize=14)
+plt.scatter(L, var, color='black')
+plt.ylabel('$V_\mathrm{p}$', fontsize=14)
+# plt.ylabel('Variance of pixel values', fontsize=14)
+plt.yticks([0, 500, 1000, 1500], fontsize=14)
 
 # 1/Variance
-plt.scatter(L, var**(-1), color='black')
-plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
-plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
+# plt.scatter(L, var**(-1), color='black')
+# plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
+# plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
 
 # plt.grid()
 # plt.legend(fontsize=14)

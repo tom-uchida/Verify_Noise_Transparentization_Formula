@@ -34,13 +34,14 @@ plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
 plt.xlabel('$L$', fontsize=14)
 
 # Number of points
-# plt.scatter(L, n, color='black')
-# plt.ylabel('Number of points', fontsize=14)
+plt.scatter(L, n, color='black')
+plt.ylabel('Number of points', fontsize=14)
 
 # Number of points in an ensemble
-plt.scatter(L, n_over_L, color='black')
-plt.yticks([0, 20000, 40000, 60000, 80000, 100000, 120000], fontsize=14)
-plt.ylabel('Number of points in an ensemble', fontsize=14)
+# plt.scatter(L, n_over_L, color='black')
+# # plt.yticks([0, 20000, 40000, 60000, 80000, 100000, 120000], fontsize=14)
+# plt.yticks([0, 50000, 100000, 150000], fontsize=14)
+# plt.ylabel('Number of points in an ensemble', fontsize=14)
 
 # plt.grid()
 # plt.legend(fontsize=14)

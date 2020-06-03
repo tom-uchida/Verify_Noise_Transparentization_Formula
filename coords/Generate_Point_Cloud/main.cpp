@@ -15,7 +15,7 @@ const char OUTPUT_NOISED_SPBR[] = "SPBR_DATA/square_coords-color_noise.spbr";
 int main(int argc, char **argv) {
     if ( argc != 5 ) {
         std::cout << "USAGE  : " << argv[0] << " [num-of-points] [sigma4coords] [sigma4color] [probability-of-adding-noise]" << std::endl;
-        std::cout << "EXAMPLE: " << argv[0] << "1000000 0.01 40 0.1" << std::endl;
+        std::cout << "EXAMPLE: " << argv[0] << " 1000000 0.01 40 0.1" << std::endl;
         exit(1);
     }
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
     fout << "#/EndHeader"            << std::endl;
 
     // Stochastically, add noise to point cloud
-    std::cout << "Adding noise... (with " << probability_of_adding_noise*100 << "%)\n" << std::endl;
+    std::cout << "\nAdding noise with " << probability_of_adding_noise*100 << "(%) ..." << std::endl;
 
     // Generate the point cloud
     for ( int i = 0 ; i < num_of_points; i++ ) {
@@ -61,23 +61,27 @@ int main(int argc, char **argv) {
         y = uniRand(); // random number [0...1] for y
         z = 0.0;
 
-        // z-coords noise
+        // Noise points
         if ( i < num_of_points*probability_of_adding_noise ) {
+            // Add coords noise
             z += gaussRand.rand(0, sigma4coords);
             noise_point_counter++;
 
-            if (r_noised < 0)    r_noised = 0;
-            if (r_noised > 255)  r_noised = 255;
-            if (g_noised < 0)    g_noised = 0;
-            if (g_noised > 255)  g_noised = 255;
-            if (b_noised < 0)    b_noised = 0;
-            if (b_noised > 255)  b_noised = 255;
-                
+            // Add color noise
+            r_noised = g_noised = b_noised = gaussRand.rand(128, sigma4color);
+            // if (r_noised < 0)    r_noised = 0;
+            // if (r_noised > 255)  r_noised = 255;
+            // if (g_noised < 0)    g_noised = 0;
+            // if (g_noised > 255)  g_noised = 255;
+            // if (b_noised < 0)    b_noised = 0;
+            // if (b_noised > 255)  b_noised = 255;
+            
             // Noise point
             fout << x        << " " << y        << " " << z         << " ";
             fout << 0        << " " << 0        << " " << 0         << " ";
             fout << r_noised << " " << g_noised << " " << b_noised  << "\n";
 
+        // Original points
         } else {
             fout << x   << " " << y   << " " << z   << " ";
             fout << 0   << " " << 0   << " " << 0   << " ";

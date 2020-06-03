@@ -106,9 +106,7 @@ def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repea
     M_mean = np.mean(M_array)
     M_max  = np.max(M_array)
     M_min  = np.min(M_array)
-    print("\nM_mean :", round(M_mean, 2))
-    print("M_max  :", M_max)
-    print("M_min  :", M_min, "\n")
+    print("\n(M_mean, M_max,M_min) = (", round(M_mean,0), ",", M_max, ",", M_min, ")")
     
     return
 
