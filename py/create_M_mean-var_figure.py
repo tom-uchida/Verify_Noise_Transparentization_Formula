@@ -29,7 +29,7 @@ var     = L_mean_var[:,2]
 M_mean  = L_mean_var[:,3]
 
 # Get the index that meets the conditions
-idx = np.where(M_mean<=50)
+idx = np.where(M_mean<50)
 idx = np.append(idx, np.max(idx)+1)
 print(idx)
 
@@ -45,16 +45,18 @@ plt.xticks([1, 10, 20, 30, 40, 50], fontsize=14)
 
 # Variance
 # plt.scatter(M_mean[idx], var[idx], color='black')
-# plt.ylabel('$V_\mathrm{p}$', fontsize=14)
+# # plt.ylabel('$V_\mathrm{p}$', fontsize=14)
+# plt.ylabel('$V_\mathrm{ratio}$', fontsize=14)
 # # plt.ylabel('Variance of pixel values', fontsize=14)
-# plt.yticks([0, 500, 1000, 1500, 2000], fontsize=14)
+# # plt.yticks([0, 500, 1000, 1500, 2000], fontsize=14)
 
 # 1/Variance
 plt.scatter(M_mean[idx], var[idx]**(-1), color='black')
 # plt.scatter(M_mean, var**(-1), color='black')
-plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
-plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
-# plt.yticks([0, 100, 200, 300, 400, 500], fontsize=14)
+# plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
+plt.ylabel('$1 / V_\mathrm{ratio}$', fontsize=14)
+# plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
+plt.yticks([0, 100, 200, 300, 400, 500], fontsize=14)
 
 # plt.grid()
 # plt.legend(fontsize=14)
