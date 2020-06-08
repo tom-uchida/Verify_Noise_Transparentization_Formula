@@ -27,10 +27,7 @@ L       = L_mean_max[:,0]
 M_mean  = L_mean_max[:,1]
 M_max   = L_mean_max[:,2]
 M_min   = L_mean_max[:,3]
-
-# Creat figure
-plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
-plt.xlabel('$L$', fontsize=14)
+M_std   = L_mean_max[:,4]
 
 # Draw a linear function(Theoretical linear function)
 alpha = 0.5
@@ -39,14 +36,20 @@ M = alpha * L_R
 plt.plot(L_R, M, "--", color='red', label=r"$M= \alpha L (\alpha=0.5)$")
 
 # M
-plt.scatter(L, M_max, color='black', label=r"$M_\mathrm{max}$", marker="^")
-plt.scatter(L, M_mean, color='black', label=r"$M_\mathrm{mean}$", marker="o")
-plt.scatter(L, M_min, color='black', label=r"$M_\mathrm{min}$", marker="v")
-plt.yticks([0, 20, 40, 60, 80, 100], fontsize=14)
-plt.ylabel('$M$', fontsize=14)
+# plt.scatter(L, M_max, color='black', label=r"$M_\mathrm{max}$", marker="^")
+# plt.scatter(L, M_mean, color='black', label=r"$M_\mathrm{mean}$", marker="o")
+# plt.scatter(L, M_min, color='black', label=r"$M_\mathrm{min}$", marker="v")
+
+# Draw error bar
+plt.errorbar(L, M_mean, M_std, fmt='ok', elinewidth=1, capsize=3, ecolor='black')
 
 # plt.grid()
 plt.legend(fontsize=14)
 # plt.gca().set_aspect('equal')
+
+plt.xticks([1, 20, 40, 60, 80, 100], fontsize=14)
+plt.xlabel('$L$', fontsize=14)
+plt.yticks([0, 20, 40, 60, 80, 100], fontsize=14)
+plt.ylabel('$M$', fontsize=14)
 
 plt.show()
