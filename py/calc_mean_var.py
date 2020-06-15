@@ -32,8 +32,8 @@ def calc_mean_and_variance(_img_GRAY):
     img_GRAY_non_bgcolor = img_GRAY_cropped[img_GRAY_cropped != BG_COLOR[0]]
     print("Number of NonBGColor pixels : ", img_GRAY_non_bgcolor.shape[0], "(pixels)")
     
-    print("Mean:", round(img_GRAY_non_bgcolor.mean(), 2), "(pixel value)")
-    print("Var:", round(img_GRAY_non_bgcolor.var(), 2), "((pixel value)^2)")
+    print("Mean:", round(img_GRAY_non_bgcolor.mean(), 0), "(pixel value)")
+    print("Var:", round(img_GRAY_non_bgcolor.var(), 0), "((pixel value)^2)")
     # print("SD:", round(img_GRAY_non_bgcolor.std(), 2), "(pixel value)")
     print("")
 
