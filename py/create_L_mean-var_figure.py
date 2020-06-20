@@ -40,17 +40,17 @@ plt.xlabel('$L$', fontsize=14)
 # plt.ylabel(r'Mean of $r_\mathrm{G/R}$ and $r_\mathrm{B/R}$', fontsize=14)
 
 # Variance
-# plt.scatter(L, var, color='black')
-# plt.ylabel('$V_\mathrm{p}$', fontsize=14)
+plt.scatter(L, var, color='black')
+plt.ylabel('$V_\mathrm{p}$', fontsize=14)
 # plt.ylabel('$V_\mathrm{ratio}$', fontsize=14)
 # # plt.ylabel('Variance of pixel values', fontsize=14)
 # plt.yticks([0, 500, 1000, 1500], fontsize=14)
 
 # 1/Variance
-plt.scatter(L, var**(-1), color='black')
-plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
+# plt.scatter(L, var**(-1), color='black')
+# plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
 # plt.ylabel('$1 / V_\mathrm{ratio}$', fontsize=14)
-plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
+# plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
 # plt.yticks([0, 0.002, 0.004, 0.006, 0.008, 0.01], fontsize=14)
 # # plt.yticks([0, 100, 200, 300, 400, 500], fontsize=14)
 

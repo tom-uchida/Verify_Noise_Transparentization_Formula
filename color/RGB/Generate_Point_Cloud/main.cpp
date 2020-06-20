@@ -14,7 +14,7 @@
 #define  TRUTH_MAX    0.99
 #define  TRUTH_MIN    0.01
 
-const char OUTPUT_FILE_NAME[] = "SPBR_DATA/plane_red_noise.spbr";
+const char OUTPUT_FILE_NAME[] = "SPBR_DATA/plane_red_color_noise.spbr";
 
 int main(int argc, char **argv) {
     if ( argc != 2 ) {
@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
     kvs::MersenneTwister        uniRand;
     kvs::BoxMuller              gaussRand;
     double x, y, z; x = y = z = 0.0;
-    int r, g, b; r = g = b =255;
+    int r, g, b; r = g = b = 255;
 
     // Add Gaussian noise to "color" of all 3D points.
     for ( int i = 0 ; i < num_of_points; i++ ) {
@@ -51,8 +51,8 @@ int main(int argc, char **argv) {
         y = uniRand(); // random number [0...1] for y
         z = 0.0;
 
-        // N(μ, σ^2)
-        // N(0, 1) → μ=0, σ^2=1
+        // N(μ, σ)
+        // N(0, 1) → μ=0, σ=1
 
         // Add red noise
         if (i < num_of_points*0.1) { 

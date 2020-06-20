@@ -12,8 +12,7 @@ color/RGB/Generate_Point_Cloud/SPBR_DATA/
 color/RGB/Generate_Point_Cloud/*.o
 color/RGB/Generate_Point_Cloud/*.kvs
 color/RGB/Generate_Point_Cloud/*.csv
-color/RGB/IMAGE_DATA/
-color/RGB/SPBR_DATA/
+color/RGB/NOISE_MODEL/
 color/RGB/*.zip
 
 coords/Generate_Point_Cloud/SPBR_DATA/
