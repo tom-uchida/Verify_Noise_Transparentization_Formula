@@ -45,6 +45,7 @@ plt.ylabel('$V_\mathrm{p}$', fontsize=14)
 # plt.ylabel('$V_\mathrm{ratio}$', fontsize=14)
 # # plt.ylabel('Variance of pixel values', fontsize=14)
 # plt.yticks([0, 500, 1000, 1500], fontsize=14)
+plt.yticks([0, 1000, 2000, 3000, 4000, 5000], fontsize=14)
 
 # 1/Variance
 # plt.scatter(L, var**(-1), color='black')

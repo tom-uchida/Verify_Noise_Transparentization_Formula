@@ -71,16 +71,16 @@ def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repea
     idx_point_color = ~((_R_pixel_values == BG_color[0]) & (_G_pixel_values == BG_color[1]) & (_B_pixel_values == BG_color[2]))
 
     # Calc M for each corresponding pixel
-    # M_array = np.empty( (_image_resol*1, _image_resol*1), float )
-    M_array = []
+    M_array = np.empty( (_image_resol*1, _image_resol*1), float )
+    # M_array = []
     print("\nCalc. M pixel by pixel ...")
-    # for h in range( _image_resol ):     # height
-    #     for w in range( _image_resol ): # width
-    # Cropping core pixels of the input image
-    num_of_core_pixels = 0
-    for h in range( int(_image_resol*0.2), int(_image_resol*0.8) ):     # height
-        for w in range( int(_image_resol*0.2), int(_image_resol*0.8) ): # width
-            num_of_core_pixels += 1
+    for h in range( _image_resol ):     # height
+        for w in range( _image_resol ): # width
+    # # Cropping core pixels of the input image
+    # num_of_core_pixels = 0
+    # for h in range( int(_image_resol*0.2), int(_image_resol*0.8) ):     # height
+    #     for w in range( int(_image_resol*0.2), int(_image_resol*0.8) ): # width
+    #         num_of_core_pixels += 1
 
             # Count the value of M
             M = 0
@@ -89,8 +89,8 @@ def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repea
                     M += 1
 
             # Save to M array
-            # M_array[h,w] = M
-            M_array.append(M)
+            M_array[h,w] = M
+            # M_array.append(M)
 
             # Show progress
             processing_ratio = 100.0 * (float)(h*_image_resol+w) / (float)(_image_resol**2)
@@ -104,10 +104,10 @@ def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repea
     # M_mean = np.mean(M_array[M_array != 0])
     # M_max  = np.max(M_array[M_array != 0])
     # M_min  = np.min(M_array[M_array != 0])
-    M_mean = np.mean(M_array)
-    M_max  = np.max(M_array)
-    M_min  = np.min(M_array)
-    M_std  = np.std(M_array)
+    M_mean = np.mean(M_array[M_array != 0])
+    M_max  = np.max(M_array[M_array != 0])
+    M_min  = np.min(M_array[M_array != 0])
+    M_std  = np.std(M_array[M_array != 0])
     print("\n(M_mean, M_max, M_min) = (", round(M_mean,0), ",", M_max, ",", M_min, ")")
     print("M_std = ", round(M_std,1))
     

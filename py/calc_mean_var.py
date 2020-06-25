@@ -22,14 +22,15 @@ def calc_mean_and_variance(_img_GRAY):
     N_all = _img_GRAY.shape[0] * _img_GRAY.shape[1]
     print("Number of pixels            : ", N_all, "(pixels)")
 
-    # Cropping core pixels of the input image
-    x_start, x_end = int(_img_GRAY.shape[0]*0.2), int(_img_GRAY.shape[0]*0.8)
-    y_start, y_end = int(_img_GRAY.shape[1]*0.2), int(_img_GRAY.shape[1]*0.8)
-    img_GRAY_cropped = _img_GRAY[x_start:x_end, y_start:y_end]
-    print("\nCropped core pixels of the input image.")
+    # # Cropping core pixels of the input image
+    # x_start, x_end = int(_img_GRAY.shape[0]*0.2), int(_img_GRAY.shape[0]*0.8)
+    # y_start, y_end = int(_img_GRAY.shape[1]*0.2), int(_img_GRAY.shape[1]*0.8)
+    # img_GRAY_cropped = _img_GRAY[x_start:x_end, y_start:y_end]
+    # print("\nCropped core pixels of the input image.")
     
     # Exclude BGColor(Black) pixels
-    img_GRAY_non_bgcolor = img_GRAY_cropped[img_GRAY_cropped != BG_COLOR[0]]
+    # img_GRAY_non_bgcolor = img_GRAY_cropped[img_GRAY_cropped != BG_COLOR[0]]
+    img_GRAY_non_bgcolor = _img_GRAY[_img_GRAY != BG_COLOR[0]]
     print("Number of NonBGColor pixels : ", img_GRAY_non_bgcolor.shape[0], "(pixels)")
     
     print("Mean:", round(img_GRAY_non_bgcolor.mean(), 0), "(pixel value)")
