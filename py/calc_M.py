@@ -73,7 +73,7 @@ def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repea
     # Calc M for each corresponding pixel
     M_array = np.empty( (_image_resol*1, _image_resol*1), float )
     # M_array = []
-    print("\nCalc. M pixel by pixel ...")
+    print("\nCalc. M for all pixels ...")
     for h in range( _image_resol ):     # height
         for w in range( _image_resol ): # width
     # # Cropping core pixels of the input image

@@ -26,5 +26,6 @@ coords/Generate_Point_Cloud/Outlier-model/IMAGE_DATA/
 coords/Generate_Point_Cloud/Outlier-model/*.o
 coords/Generate_Point_Cloud/Outlier-model/*.kvs
 coords/NOISE_MODEL/
+coords/ORIGINAL_MODEL/
 coords/SPBR_DATA/
 coords/IMAGE_DATA/
