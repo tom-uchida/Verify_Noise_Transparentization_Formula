@@ -1,19 +1,15 @@
 .vscode/
 color/.vscode
 
-color/GRAY/Generate_Point_Cloud/SPBR_DATA/
-color/GRAY/Generate_Point_Cloud/*.o
-color/GRAY/Generate_Point_Cloud/*.kvs
-color/GRAY/Generate_Point_Cloud/*.csv
-color/GRAY/NOISE_MODEL/
-color/GRAY/*.zip
-
-color/RGB/Generate_Point_Cloud/SPBR_DATA/
-color/RGB/Generate_Point_Cloud/*.o
-color/RGB/Generate_Point_Cloud/*.kvs
-color/RGB/Generate_Point_Cloud/*.csv
-color/RGB/NOISE_MODEL/
-color/RGB/*.zip
+color/Generate_Point_Cloud/Gaussian-model/GRAY/SPBR_DATA/
+color/Generate_Point_Cloud/Gaussian-model/GRAY/IMAGE_DATA/
+color/Generate_Point_Cloud/Gaussian-model/GRAY/*.o
+color/Generate_Point_Cloud/Gaussian-model/GRAY/*.kvs
+color/Generate_Point_Cloud/Gaussian-model/RGB/SPBR_DATA/
+color/Generate_Point_Cloud/Gaussian-model/RGB/IMAGE_DATA/
+color/Generate_Point_Cloud/Gaussian-model/RGB/*.o
+color/Generate_Point_Cloud/Gaussian-model/RGB/*.kvs
+color/NOISE_MODEL/
 
 coords/Generate_Point_Cloud/Gaussian-model/SPBR_DATA/
 coords/Generate_Point_Cloud/Gaussian-model/PLY_DATA/
@@ -26,6 +22,3 @@ coords/Generate_Point_Cloud/Outlier-model/IMAGE_DATA/
 coords/Generate_Point_Cloud/Outlier-model/*.o
 coords/Generate_Point_Cloud/Outlier-model/*.kvs
 coords/NOISE_MODEL/
-coords/ORIGINAL_MODEL/
-coords/SPBR_DATA/
-coords/IMAGE_DATA/

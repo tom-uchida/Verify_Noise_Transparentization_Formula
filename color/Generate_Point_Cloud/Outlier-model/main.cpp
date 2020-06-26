@@ -10,12 +10,12 @@
 #include <vector>
 #include <math.h>
 
-const char OUTPUT_NOISED_SPBR[] = "SPBR_DATA/square_outlier-coords-noise.spbr";
+const char OUTPUT_NOISED_SPBR[] = "SPBR_DATA/square_outlier-color-noise.spbr";
 
 int main(int argc, char **argv) {
-    if ( argc != 5 ) {
-        std::cout << "USAGE  : " << argv[0] << " [num-of-points] [noise probability] [sigma4color] [depth]" << std::endl;
-        std::cout << "EXAMPLE: " << argv[0] << " 10000000 0.1 40 2.0" << std::endl;
+    if ( argc != 3 ) {
+        std::cout << "USAGE  : " << argv[0] << " [num-of-points] [noise probability]" << std::endl;
+        std::cout << "EXAMPLE: " << argv[0] << " 10000000 0.1" << std::endl;
         exit(1);
     }
 
@@ -27,12 +27,8 @@ int main(int argc, char **argv) {
     // Check args
     int num_of_points       = atoi(argv[1]);
     float noise_probability = atof(argv[2]);
-    int sigma4color         = atoi(argv[3]);
-    float depth             = atof(argv[4]);
     std::cout << "Number of points      : " << num_of_points << " (points)" <<std::endl;
     std::cout << "Noise probability     : " << noise_probability*100  << " (%)" << std::endl;
-    std::cout << "sigma for color noise : " << sigma4color << " (pixel value)" << std::endl;
-    std::cout << "Depth                 : " << depth << std::endl;
 
     // variables
     kvs::MersenneTwister        uniRand;
@@ -55,18 +51,16 @@ int main(int argc, char **argv) {
 
     // Generate noise model point cloud
     for ( int i = 0 ; i < num_of_points; i++ ) {
+        x = uniRand(); // random number [0...1] for x
+        y = uniRand(); // random number [0...1] for y
+        z = 0.0;
 
         // Noise points
         if ( i < num_of_points*noise_probability ) {
             noise_point_counter++;
-            
-            // Random 3D point in Bounding Box
-            x = uniRand();
-            y = uniRand();
-            z = depth*uniRand() - 0.5*depth;
 
-            // Add color noise
-            r_noised = g_noised = b_noised = gaussRand.rand(128, sigma4color);
+            // Add outlier noise to color (Grayscale)
+            r_noised = g_noised = b_noised = int(uniRand()*255);
             
             // Noise point
             fout << x        << " " << y        << " " << z         << " ";
@@ -75,10 +69,6 @@ int main(int argc, char **argv) {
 
         // Original points
         } else {
-            x = uniRand(); // random number [0...1] for x
-            y = uniRand(); // random number [0...1] for y
-            z = 0.0;
-
             fout << x   << " " << y   << " " << z   << " ";
             fout << 0   << " " << 0   << " " << 0   << " ";
             fout << 255 << " " << 255 << " " << 255 << "\n";
