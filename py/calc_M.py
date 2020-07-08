@@ -71,13 +71,15 @@ def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repea
     idx_point_color = ~((_R_pixel_values == BG_color[0]) & (_G_pixel_values == BG_color[1]) & (_B_pixel_values == BG_color[2]))
 
     # Calc M for each corresponding pixel
-    M_array = np.empty( (_image_resol*1, _image_resol*1), float )
+    # M_array = np.empty( (_image_resol*1, _image_resol*1), float )
+    M_array = np.zeros( (_image_resol*1, _image_resol*1), float )
     # M_array = []
     print("\nCalc. M for all pixels ...")
     for h in range( _image_resol ):     # height
         for w in range( _image_resol ): # width
     # # Cropping core pixels of the input image
     # num_of_core_pixels = 0
+    # print("Cropped.")
     # for h in range( int(_image_resol*0.2), int(_image_resol*0.8) ):     # height
     #     for w in range( int(_image_resol*0.2), int(_image_resol*0.8) ): # width
     #         num_of_core_pixels += 1
@@ -101,9 +103,6 @@ def CalcMforEachPixel( _R_pixel_values, _G_pixel_values, _B_pixel_values, _repea
     # end for h
 
     # Calc. statistics
-    # M_mean = np.mean(M_array[M_array != 0])
-    # M_max  = np.max(M_array[M_array != 0])
-    # M_min  = np.min(M_array[M_array != 0])
     M_mean = np.mean(M_array[M_array != 0])
     M_max  = np.max(M_array[M_array != 0])
     M_min  = np.min(M_array[M_array != 0])

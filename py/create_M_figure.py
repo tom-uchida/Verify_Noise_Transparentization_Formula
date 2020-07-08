@@ -18,16 +18,16 @@ if len(args) != 2:
 csv = pd.read_csv(args[1])
 
 # Convert to numpy array
-L_mean_max = csv.values
-print(L_mean_max.shape)
-print(L_mean_max)
+csv = csv.values
+print(csv.shape)
+print(csv)
 
 # Get each column
-L       = L_mean_max[:,0]
-M_mean  = L_mean_max[:,1]
-M_max   = L_mean_max[:,2]
-M_min   = L_mean_max[:,3]
-M_std   = L_mean_max[:,4]
+L       = csv[:,0]
+M_mean  = csv[:,1]
+M_max   = csv[:,2]
+M_min   = csv[:,3]
+M_std   = csv[:,4]
 
 # Draw a linear function(Theoretical linear function)
 alpha = 0.5
