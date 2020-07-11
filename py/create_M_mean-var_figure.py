@@ -29,15 +29,13 @@ var     = L_mean_var[:,2]
 M_mean  = L_mean_var[:,3]
 
 # Get the index that meets the conditions
-idx = np.where(M_mean<50)
+idx = np.where(M_mean<=50)
 idx = np.append(idx, np.max(idx)+1)
 # idx = np.append(idx, np.max(idx))
 print(idx)
 
 # Creat figure
 plt.figure(figsize=(8, 6))
-plt.xlabel('$M$', fontsize=14)
-# plt.xticks([1, 10, 20, 30, 40, 50], fontsize=14)
 
 # Mean
 # plt.scatter(L, mean, color='black')
@@ -52,9 +50,9 @@ plt.xlabel('$M$', fontsize=14)
 # plt.yticks([0, 500, 1000, 1500, 2000], fontsize=14)
 
 # 1/Variance
-plt.scatter(M_mean[idx], var[idx]**(-1), color='black')
+plt.scatter(M_mean[idx[1:]], var[idx[1:]]**(-1), color='black')
 # plt.scatter(M_mean, var**(-1), color='black')
-# plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
+plt.ylabel('$1 / V_\mathrm{p}$', fontsize=14)
 # plt.ylabel('$1 / V_\mathrm{ratio}$', fontsize=14)
 plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
 # plt.yticks([0, 0.002, 0.004, 0.006, 0.008, 0.01], fontsize=14)
@@ -63,5 +61,8 @@ plt.yticks([0, 0.01, 0.02, 0.03, 0.04, 0.05], fontsize=14)
 # plt.grid()
 # plt.legend(fontsize=14)
 # plt.gca().set_aspect('equal')
+
+plt.xlabel('$M$', fontsize=14)
+plt.xticks([1, 10, 20, 30, 40, 50], fontsize=14)
 
 plt.show()
