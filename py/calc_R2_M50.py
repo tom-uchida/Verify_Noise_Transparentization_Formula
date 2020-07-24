@@ -32,8 +32,8 @@ print(idx)
 # Calc. r2_score
 from sklearn.metrics import r2_score
 alpha = 0.5
-# y_true = M_mean[idx]
-y_true = M_mean[idx] - M_std[idx]
+y_true = M_mean[idx]
+# y_true = M_mean[idx] - M_std[idx]
 y_pred = M = alpha * L[idx]
 print("\nr2_score:", round(r2_score(y_true, y_pred),2) )
 
